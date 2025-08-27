@@ -8,3 +8,11 @@
   --color-background: #fff;
   --color-text: #222;
 }
+.color
+{
+  color: #FF008E;
+}
+.btn-back
+{
+  background-color: #fa309fd1;
+}
