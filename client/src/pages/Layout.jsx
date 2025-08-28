@@ -13,8 +13,8 @@ const Layout = () => {
   const {user}= useUser();
 
   return user ? (
-    <div className='flex flex-col h-screen items-start justify-start'>
-      <nav className='w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200'>
+    <div className='flex flex-col h-screen items-start border-b border-gray-200 justify-start'>
+      <nav className='w-full px-10 min-h-10 flex items-center justify-between border-b border-gray-200'>
         <img src={servin} alt='' onClick={() => navigate('/')} />
         {
           sidebar ? <X onClick={() => setSidebar(false)} className='w-6 h-6 text-gray-600 sm:hidden' /> : <Menu onClick={() => setSidebar(true)} className='w-6 h-6 text-gray-660 sm:hidden' />
