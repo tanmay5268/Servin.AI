@@ -15,7 +15,7 @@ const Layout = () => {
   return user ? (
     <div className='flex flex-col h-screen items-start border-b border-gray-200 justify-start'>
       <nav className='w-full px-10 min-h-10 flex items-center justify-between border-b border-gray-200'>
-        <img src={servin} alt='' onClick={() => navigate('/')} />
+        <img className='cursor-pointer w-32 sm:w-44 ' src={servin} alt='' onClick={() => navigate('/')} />
         {
           sidebar ? <X onClick={() => setSidebar(false)} className='w-6 h-6 text-gray-600 sm:hidden' /> : <Menu onClick={() => setSidebar(true)} className='w-6 h-6 text-gray-660 sm:hidden' />
 
@@ -23,7 +23,7 @@ const Layout = () => {
       </nav>
       <div className='flex-1 w-full flex h-[calc(100vh-64px)] '>
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-        <div classname='flex-1 bg-[#F4F7FB]'>
+  <div className='flex-1 bg-gray-100'>
            <Outlet />
         </div>
       </div>
