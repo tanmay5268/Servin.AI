@@ -16,11 +16,73 @@
 {
   background-color: #fa309fd1;
 }
-.c1-drawerRoot{
-  z-index:10 !important;
+/* Z-index Layering System */
+
+/* Layer 1: Tick marks (z-index: 10) - Lowest layer */
+.pricing-table-no-ticks svg,
+.pricing-table-no-ticks [class*="cl-"] svg {
+  z-index: 10 !important;
+  display: flex !important; /* Make sure they're visible */
+  position: relative;
 }
 
-/* Hide tick marks in Clerk PricingTable */
-.pricing-table-no-ticks svg {
-  display: none !important;
+/* Layer 2: Navbar is z-20 in navbar.jsx - Middle layer */
+.navbar-blur {
+  position: relative;
+  overflow: visible;
+  background: transparent;
+}
+
+.navbar-blur::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Make it extend beyond the navbar's height */
+  height: 150%; 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Subtle purple tint with background blend */
+  background: linear-gradient(
+    to right,
+    rgba(230, 230, 250, 0.3), /* Very light lavender */
+    rgba(238, 224, 255, 0.25), /* Light purple */
+    rgba(230, 230, 250, 0.3) /* Light lavender again */
+  );
+  z-index: -1;
+  /* Soft gradient for a butter-like blend */
+  mask-image: linear-gradient(
+    to bottom,
+    black 50%,
+    rgba(0, 0, 0, 0.8) 70%,
+    rgba(0, 0, 0, 0.5) 85%, 
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 50%,
+    rgba(0, 0, 0, 0.8) 70%,
+    rgba(0, 0, 0, 0.5) 85%, 
+    transparent 100%
+  );
+}
+
+/* Layer 3: Drawer (z-index: 1000) - Top layer */
+.c1-drawerRoot {
+  z-index: 1000 !important;
+}
+
+/* Let Clerk's drawer work naturally - reset any interference */
+[class*="cl-drawerRoot"],
+[class*="cl-drawer"],
+[id*=":rg:"],
+[role="dialog"],
+[class*="cl-backdropRoot"],
+[class*="cl-drawerContent"] {
+  /* Just ensure high z-index but don't interfere with positioning */
+  z-index: 1000 !important; 
+}
+.reset-tw,.reset-tw *{
+  all:revert !important;
 }
