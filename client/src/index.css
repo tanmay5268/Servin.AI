@@ -16,3 +16,11 @@
 {
   background-color: #fa309fd1;
 }
+.c1-drawerRoot{
+  z-index:10 !important;
+}
+
+/* Hide tick marks in Clerk PricingTable */
+.pricing-table-no-ticks svg {
+  display: none !important;
+}

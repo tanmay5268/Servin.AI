@@ -7,7 +7,7 @@ const Plan = () => {
         <h2 className='text-slate-700 text-[42px] fint-semibold'>Choose Your Plan</h2>
         <p className='text-grey-500 max-w-lg mx-auto'>Start for free and scale up as you grow. Find the perfect plan for your content creation needs.</p>
       </div>
-      <div className='mt-14 max-sm:mx-8'>
+      <div className='mt-14 max-sm:mx-8 pricing-table-no-ticks'>
         <PricingTable/>
       </div>
     </div>
