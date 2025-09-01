@@ -32,7 +32,7 @@ const Dashboard = () => {
         {/*Active plan*/}
         <div className='flex shadow-[0_4px_24px_0_rgba(128,90,213,0.30)] justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-400'>
           <div className='text-slate-600'>
-            <p className='text-sm'>Total Creations</p>
+            <p className='text-sm'>Active Plan</p>
             <h2 className='text-xl font-semibold'>
               <Protect plan='full_access' fallback='free_user'>Premium</Protect>
             </h2>

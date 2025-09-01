@@ -36,7 +36,7 @@ Transform your content creation with our suite of premium AI tools. Write articl
                 </div>
             </div>
             <p className="pt-4 text-center text-xs md:text-sm pb-5">
-                Copyright 2025 © <a href="https://prebuiltui.com">Servin.AI</a>. Co powered by Tanvi Mehta.
+                Copyright 2025 © <a href="https://prebuiltui.com">Servin.AI</a>
             </p>
         </footer>
     );
