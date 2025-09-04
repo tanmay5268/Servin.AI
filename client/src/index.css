@@ -86,3 +86,9 @@
 .reset-tw,.reset-tw *{
   all:revert !important;
 }
+
+/* Ensure interactive controls inside the sidebar are above other overlays */
+.sidebar-top, .sidebar-bottom, .w-60 > * {
+  z-index: 60; /* sits above most overlays but below topmost drawers (1000) */
+  position: relative;
+}
