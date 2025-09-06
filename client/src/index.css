@@ -92,3 +92,24 @@
   z-index: 60; /* sits above most overlays but below topmost drawers (1000) */
   position: relative;
 }
+
+/* Smooth gradient slide animation (keeps existing colors intact) */
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradientSlide 4s ease infinite;
+}
+
+@keyframes gradientSlide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hover-only variant: static by default, animates when hovered */
+.animated-gradient-hover {
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+}
+.animated-gradient-hover:hover {
+  animation: gradientSlide 4s ease infinite;
+}
