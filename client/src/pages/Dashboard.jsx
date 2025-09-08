@@ -20,7 +20,7 @@ const Dashboard = () => {
     <div className='h-full  p-6 overflow-y-scroll space-y-6'>
       <div className='flex justify-start gap-4  flex-wrap'>
         {/*Total Creations card*/}
-        <div className='flex shadow-[0_4px_24px_0_rgba(128,90,213,0.30)] justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-400'>
+        <div className='flex  justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-400'>
           <div className='text-slate-600'>
             <p className='text-sm'>Total Creations</p>
             <h2 className='text-xl font-semibold'>{creations.length}</h2>
@@ -30,7 +30,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/*Active plan*/}
-        <div className='flex shadow-[0_4px_24px_0_rgba(128,90,213,0.30)] justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-400'>
+        <div className='flex  justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-400'>
           <div className='text-slate-600'>
             <p className='text-sm'>Active Plan</p>
             <h2 className='text-xl font-semibold'>
