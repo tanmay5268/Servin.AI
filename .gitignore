@@ -1,4 +1,7 @@
 # Root gitignore
+server/.env
+client/.env 
+
 # Ignore lockfiles in subprojects
 client/package-lock.json
 server/package-lock.json
