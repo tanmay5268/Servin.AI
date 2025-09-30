@@ -40,7 +40,7 @@ Servin.AI is an open-source web application designed to provide a suite of AI-po
 ## Application Architecture 
 
 <p align="center">
-<img src="client/public/image.png" alt="Servin.AI Logo" width="600" />
+<img src="client/public/image.png" alt="architecture" width="600" />
 </p>
 
 
