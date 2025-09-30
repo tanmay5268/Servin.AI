@@ -37,26 +37,12 @@ Servin.AI is an open-source web application designed to provide a suite of AI-po
   - **Neon:** A serverless Postgres database.
   - **Clerk:** for backend authentication.
 
-## 📸 Screenshots
+## Application Architecture 
 
-<table>
-<tr>
-<td align="center"><strong>Home Page</strong></td>
-<td align="center"><strong>Dashboard</strong></td>
-</tr>
-<tr>
-<td><img src="client/src/assets/gradientBackground.png" alt="Home Page Screenshot" width="400"/></td>
-<td><img src="client/src/assets/ai_gen_img_2.png" alt="Dashboard Screenshot" width="400"/></td>
-</tr>
-<tr>
-<td align="center"><strong>AI Tools</strong></td>
-<td align="center"><strong>Community</strong></td>
-</tr>
-<tr>
-<td><img src="client/src/assets/grabient-grid.png" alt="AI Tools Screenshot" width="400"/></td>
-<td><img src="client/src/assets/ai_gen_img_1.png" alt="Community Screenshot" width="400"/></td>
-</tr>
-</table>
+<p align="center">
+<img src="client/public/image.png" alt="Servin.AI Logo" width="600" />
+</p>
+
 
 ##  Getting Started
 
