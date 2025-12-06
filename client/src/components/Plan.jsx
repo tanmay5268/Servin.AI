@@ -8,7 +8,7 @@ const Plan = () => {
         <p className='text-grey-500 max-w-lg mx-auto'>Start for free and scale up as you grow. Find the perfect plan for your content creation needs.</p>
       </div>
       <div className='mt-14 max-sm:mx-8 pricing-table-no-ticks'>
-        <PricingTable/>
+        <PricingTable />
       </div>
     </div>
   )

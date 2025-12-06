@@ -17,7 +17,7 @@ const App = () => {
   const {getToken}= useAuth()
   useEffect(()=>{
     getToken().then((token)=>console.log(token))
-  },[])
+  },[getToken])
     return ( 
     <div>
       
