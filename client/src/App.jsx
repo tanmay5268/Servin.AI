@@ -15,9 +15,18 @@ import { useAuth } from '@clerk/clerk-react'
 
 const App = () => {
   const {getToken}= useAuth()
-  useEffect(()=>{
-    getToken().then((token)=>console.log(token))
-  },[getToken])
+  useEffect(() => {
+  const fetchToken = async () => {
+    try {
+      const token = await getToken();
+      console.log('Token:', token);
+    } catch (error) {
+      console.error('Token fetch error:', error);
+    }
+  };
+  
+  fetchToken();
+}, [getToken]);
     return ( 
     <div>
       
