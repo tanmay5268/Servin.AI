@@ -18,7 +18,6 @@ const Layout = () => {
         <img className='cursor-pointer w-32 sm:w-44 ' src={servin} alt='' onClick={() => navigate('/')} />
         {
           sidebar ? <X onClick={() => setSidebar(false)} className='w-6 h-6 text-gray-600 sm:hidden' /> : <Menu onClick={() => setSidebar(true)} className='w-6 h-6 text-gray-660 sm:hidden' />
-
         }
       </nav>
       <div className='flex-1 w-full flex h-[calc(100vh-64px)] '>
