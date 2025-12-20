@@ -4,9 +4,9 @@ import cors from 'cors';
 import { clerkMiddleware, requireAuth } from '@clerk/express'
 import aiRouter from './routes/aiRoutes.js';
 
-console.log('CLERK_SECRET_KEY:', process.env.CLERK_SECRET_KEY ? '✓ Loaded' : '✗ Missing');
+/* console.log('CLERK_SECRET_KEY:', process.env.CLERK_SECRET_KEY ? '✓ Loaded' : '✗ Missing');
 console.log('CLERK_PUBLISHABLE_KEY:', process.env.CLERK_PUBLISHABLE_KEY ? '✓ Loaded' : '✗ Missing');
-
+ */
 const app = express();
 
 // Middleware order matters!

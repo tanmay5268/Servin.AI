@@ -14,19 +14,24 @@ import Community from './pages/Community'
 import { useAuth } from '@clerk/clerk-react'
 
 const App = () => {
-  const {getToken}= useAuth()
-  useEffect(() => {
-  const fetchToken = async () => {
-    try {
-      const token = await getToken();
-      console.log('Token:', token);
-    } catch (error) {
-      console.error('Token fetch error:', error);
-    }
-  };
+  const { getToken, isSignedIn, isLoaded } = useAuth()
   
-  fetchToken();
-}, [getToken]);
+  useEffect(() => {
+    const fetchToken = async () => {
+      if (!isLoaded || !isSignedIn) {
+        console.log('Auth not ready or not signed in:', { isLoaded, isSignedIn });
+        return;
+      }
+      try {
+        const token = await getToken();
+        console.log('Token:', token);
+      } catch (error) {
+        console.error('Token fetch error:', error);
+      }
+    };
+    
+    fetchToken();
+  }, [getToken, isSignedIn, isLoaded]);
     return ( 
     <div>
       

@@ -20,7 +20,13 @@ const Navbar = () => {
                 onClick={() => navigate('/')}
             />
             {
-                user ? <UserButton />
+                user ? <UserButton appearance={{
+                    elements: {
+                        userButtonPopoverActionButton__manageAccount: {
+                            display: 'none'
+                        }
+                    }
+                }} />
                     :
                     (
                         <button onClick={openSignIn}
