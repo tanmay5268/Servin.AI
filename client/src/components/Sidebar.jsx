@@ -21,8 +21,8 @@ const Sidebar = ({ sidebar, setSidebar }) => {
   return (
   <div className={`w-60 z-50 bg-white border-r border-gray-200 flex flex-col justify-between items-center max-sm:absolute top-1 bottom-0 ${sidebar ? 'translate-x-0' : 'max-sm:-translate-x-full'} transition-all duration-300 ease-in-out`}>
       <div className='my-9 w-full'>
-        <img src={user.imageUrl} alt='imageurl' className='w-13 rounded-full mx-auto' />
-        <h1 className='mt-1 text-center'>{user.fullName}</h1>
+        <img src={user.imageUrl} alt='imageurl' className='w-10 rounded-full mx-auto' />
+        <h1 className=' text-sm mt-1 text-center'>{user.fullName}</h1>
         <div className='px-6 mt-5 text-sm text-gray-600 font-medium'>
           {navItems.map(({ to, label, Icon }) => (
             <NavLink
