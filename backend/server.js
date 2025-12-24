@@ -4,6 +4,7 @@ import cors from 'cors';
 import { clerkMiddleware, requireAuth } from '@clerk/express'
 import aiRouter from './routes/aiRoutes.js';
 import connectCloudinary from './configs/cloudinary.js';
+import userRouter from './routes/userRoutes.js';
 
 /* console.log('CLERK_SECRET_KEY:', process.env.CLERK_SECRET_KEY ? '✓ Loaded' : '✗ Missing');
 console.log('CLERK_PUBLISHABLE_KEY:', process.env.CLERK_PUBLISHABLE_KEY ? '✓ Loaded' : '✗ Missing');
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 // Protected routes (auth required)
 app.use(requireAuth()); 
 app.use('/api/ai', aiRouter);
+app.use('/api/user', userRouter);
 
 const PORT = process.env.PORT || 3000;
 

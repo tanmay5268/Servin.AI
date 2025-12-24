@@ -5,9 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import axios from "axios";
 import {v2 as cloudinary} from 'cloudinary';
 import fs from 'fs';
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const pdf = require('pdf-parse');
+import pdf from 'pdf-parse-new'
 const AI = new GoogleGenAI({
     apiKey: process.env.GOOGLE_API_KEY,
 
@@ -157,12 +155,17 @@ export const generateImage = async (req, res) => {
 
 export const removeImageBackground = async (req, res) => {
     try {
-        console.log('[CONTROLLER] Generate image start');
+        console.log('[CONTROLLER] removeImageBackground start');
+        console.log('[DEBUG]req.file',req.file);
+        console.log('[DEBUG]req.body',req.body);
         const userId = req.auth().userId; // Use from middleware instead of calling req.auth()
         if (!userId) {
             return res.status(401).json({ success: false, message: 'No user ID' });
         }
-        const {image} = req.file;
+        const image = req.file;
+        if (!image) {
+            return res.status(400).json({ success: false, message: 'No image uploaded' });
+        }
         /* const plan = req.plan;
         const free_usage = req.free_usage;
         console.log('[CONTROLLER] Params:', { userId, plan, free_usage, promptLength: prompt?.length });
@@ -177,7 +180,7 @@ export const removeImageBackground = async (req, res) => {
         const {secure_url}=await cloudinary.uploader.upload(image.path, {
             transformation: [{
                 effect: "background_removal",
-                backgrounf_removal: "remove_the_background"
+                background_removal: "remove_the_background"
             }]
         })
 
@@ -212,7 +215,7 @@ export const removeImageObject = async (req, res) => {
             return res.status(401).json({ success: false, message: 'No user ID' });
         }
         const {object}=req.body;
-        const {image} = req.file;
+        const image = req.file;
         /* const plan = req.plan;
         const free_usage = req.free_usage;
         console.log('[CONTROLLER] Params:', { userId, plan, free_usage, promptLength: prompt?.length });
@@ -253,7 +256,7 @@ export const removeImageObject = async (req, res) => {
 
 export const resumeReview = async (req, res) => {
     try {
-        console.log('[CONTROLLER] Generate image start');
+        console.log('[CONTROLLER] Resume review start');
         const userId = req.auth().userId; // Use from middleware instead of calling req.auth()
         if (!userId) {
             return res.status(401).json({ success: false, message: 'No user ID' });
@@ -284,10 +287,6 @@ export const resumeReview = async (req, res) => {
         const response = await AI.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
-            rules: [
-                "Do not include numbering in the titles.",
-                "Make sure the titles are engaging and relevant to the prompt."
-            ]
         });
         const content = response.text;
 
