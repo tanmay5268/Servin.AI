@@ -1,6 +1,10 @@
 import React from "react";
 import { Edit, Sparkles } from "lucide-react";
-
+import axios from "axios";
+import { useState } from "react";
+import { useAuth } from "@clerk/clerk-react";
+import toast from "react-hot-toast";
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL; 
 const WriteArticle = () => {
   const articleLength = [
     { length: 800, text: "Short (500-800 words)" },
@@ -9,11 +13,33 @@ const WriteArticle = () => {
   ];
 
   const [selectedLength, setSelectedLength] = React.useState(articleLength[0]);
-  const [input, setInput] = React.useState("");
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [content, setContent] = useState("");
+  const {getToken} = useAuth();
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      setLoading(true);
+      const prompt = `Write a detailed article on the topic "${input}" with a length of around ${selectedLength.text} words. Make sure the article is well-structured, informative, and engaging. Use subheadings, bullet points, and examples where appropriate to enhance readability. The article should provide value to the readers and cover various aspects of the topic comprehensively.`;
+      const {data}  = await axios.post('api/ai/generate-article', {prompt,selectedLength: selectedLength.length},{
+        headers: {
+          Authorization: `Bearer ${await getToken()}`
+        }
+      });
+      if(data.success){
+        setContent(data.content)
+        ;}
+        else{
+          toast.error("Failed to generate article. Please try again.");
+        }
+    } catch (error) {
+      toast.error("An error occurred while generating the article.");
+      console.error("Article generation error:", error);
+    }
     // TODO: wire generation
+    setLoading(false);
   }
 
   return (
@@ -53,7 +79,7 @@ const WriteArticle = () => {
           ))}
         </div>
 
-  <button className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#226BFF] to-[#65ADFF] animated-gradient-hover text-white px-4 py-2 mt-6 text-sm rounded-full">
+  <button className="w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#226BFF] to-[#65ADFF] animated-gradient-hover text-white px-4 py-2 mt-6 text-sm rounded-full" onClick={onSubmitHandler}>
           <Edit className="w-5" />
           Generate Article
         </button>
@@ -65,13 +91,21 @@ const WriteArticle = () => {
           <Edit className="w-5 h-5 text-[#4A7AFF]" />
           <h1 className="text-xl font-semibold">Generated Article</h1>
         </div>
-
-        <div className="flex-1 flex justify-center items-center">
+        {!content ? (<div className="flex-1 flex justify-center items-center">
           <div className="text-sm flex flex-col items-center gap-5 text-gray-400">
             <Edit className="w-6 h-6 text-gray-300" />
             <p>Enter a topic and click "Generate Article" to get started</p>
           </div>
+        </div>) : (
+          <div className="mt-4 overflow-y-scroll max-h-[520px] prose prose-sm prose-slate">
+          {loading ? (
+            <p>Generating article, please wait...</p>
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+          ) }
         </div>
+        ) }
+        
       </div>
     </div>
   );

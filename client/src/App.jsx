@@ -12,11 +12,11 @@ import RemoveObject from './pages/RemoveObject'
 import ReviewResume from './pages/ReviewResume'
 import Community from './pages/Community'
 import { useAuth } from '@clerk/clerk-react'
-
+import {Toaster} from 'react-hot-toast'
 const App = () => {
   const { getToken, isSignedIn, isLoaded } = useAuth()
   
-  useEffect(() => {
+  /* {useEffect(() => {
     const fetchToken = async () => {
       if (!isLoaded || !isSignedIn) {
         console.log('Auth not ready or not signed in:', { isLoaded, isSignedIn });
@@ -31,10 +31,10 @@ const App = () => {
     };
     
     fetchToken();
-  }, [getToken, isSignedIn, isLoaded]);
+  }, [getToken, isSignedIn, isLoaded]); */
     return ( 
     <div>
-      
+      <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/ai' element={<Layout/>}>
