@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
+import Markdown from  "react-markdown";
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL; 
 const WriteArticle = () => {
   const articleLength = [
@@ -101,7 +102,9 @@ const WriteArticle = () => {
           {loading ? (
             <p>Generating article, please wait...</p>
           ) : (
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+              <div className="reset-tw">
+                <Markdown>{content}</Markdown>
+              </div>
           ) }
         </div>
         ) }
