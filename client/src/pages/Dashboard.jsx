@@ -12,10 +12,10 @@ axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 const Dashboard = () => {
   const[creations,setCreations]=useState([])
   const { getToken } = useAuth();
-  const[loading,setLoading]=useState(false);
+  const[loading,setLoading]=useState(true);
   const getDashboardData=async()=>{
     try{
-      const { data } = await axios.get("/api/user/get-published-creations", {
+      const { data } = await axios.get("/api/user/get-user-creations", {
         headers: {
           Authorization: `Bearer ${await getToken()}`,
         },
