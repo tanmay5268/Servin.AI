@@ -10,7 +10,7 @@ const GenerateImages = () => {
   const ImageStyle = ['Realistic', '3D style', 'Cartoon', 'Pixel Art' , 'Ghibli', 'Anime style','Fantasy style','Portrait Style'];
         const [selectedStyle, setSelectedStyle] = React.useState('Realistic');
         const [input, setInput] = React.useState("");
-        const [publish,setPublish]=useState(false);
+        const [published,setPublished]=useState(false);
         const [loading, setLoading] = useState(false);
         const [content, setContent] = useState("");
         const { getToken } = useAuth();
@@ -18,10 +18,10 @@ const GenerateImages = () => {
           e.preventDefault();
           try {
             setLoading(true);
-            const prompt = `Generate an image with the description "${input}" in a ${selectedStyle} style.`;
+            const prompt = `${input} in a ${selectedStyle} style.`;
             const { data } = await axios.post(
               "api/ai/generate-image",
-              { prompt ,publish},
+              { prompt ,published},
               {
                 headers: {
                   Authorization: `Bearer ${await getToken()}`,
@@ -85,8 +85,8 @@ text-slate-700"
             <input
               type="checkbox"
               className="peer sr-only"
-              onChange={(e) => setPublish(e.target.checked)}
-              checked={publish}
+              onChange={(e) => setPublished(e.target.checked)}
+              checked={published}
             />
             <div className="w-9 h-5 bg-slate-300 rounded-full peer-checked:bg-green-500  transition"></div>
             <span className="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition peer-checked:translate-x-4"></span>
