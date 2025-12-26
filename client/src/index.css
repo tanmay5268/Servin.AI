@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import "tailwindcss";
+
 *{
   font-family: "Outfit", sans-serif;
+}
+body::-webkit-scrollbar {
+  /* Hide scrollbar for Chrome, Safari, Opera */
+  display: none;
 }
 :root {
   --color-primary: #5044E5;
@@ -112,4 +117,14 @@
 }
 .animated-gradient-hover:hover {
   animation: gradientSlide 4s ease infinite;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
 }
